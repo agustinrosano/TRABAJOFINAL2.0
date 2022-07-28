@@ -114,7 +114,7 @@ const pintarFooter = () => {
     footer.innerHTML = ''
     if(Object.keys(carrito).length === 0){
         footer.innerHTML = `
-        <th scope="row" colspan="5">Carrito vacío con innerHTML</th>
+        <th scope="row" colspan="5">Carrito vacío con AGREGA PROD</th>
         `
         return
     }  
@@ -129,12 +129,27 @@ const clone = templateFooter.cloneNode(true)
 fragment.appendChild(clone)
 footer.appendChild(fragment)
 
+// botones de carrito 
+
 const btnVaciar = document.getElementById('vaciar-carrito')
 btnVaciar.addEventListener('click', () => {
     carrito = {}
     pintarCarrito()
     })
+
+const btnComprar = document.getElementById('comprar')   
+btnComprar.addEventListener('click',() =>{
+    Swal.fire(
+        'Buen Trabajo!',
+        'La compra a sido realizada!',
+        'success'
+    )
+    carrito = {}
+    pintarCarrito()
+
+    })
 }
+
 
 
 
